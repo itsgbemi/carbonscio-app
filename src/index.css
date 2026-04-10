@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-brutal-yellow: #fef08a;
+  --color-brutal-pink: #fbcfe8;
+  --color-brutal-green: #bbf7d0;
+  --color-brutal-blue: #bfdbfe;
+  --color-brutal-orange: #fed7aa;
+  --color-brutal-purple: #e9d5ff;
+  
+  --shadow-brutal: 6px 6px 0px 0px rgba(0,0,0,1);
+  --shadow-brutal-lg: 10px 10px 0px 0px rgba(0,0,0,1);
+
+  --background-image-gradient-pastel: linear-gradient(to bottom right, var(--color-brutal-yellow), var(--color-brutal-pink));
+  --background-image-gradient-sky: linear-gradient(to bottom right, var(--color-brutal-blue), var(--color-brutal-green));
+  --background-image-gradient-sunset: linear-gradient(to bottom right, var(--color-brutal-orange), var(--color-brutal-purple));
+}
+
+@layer base {
+  body {
+    @apply font-mono bg-white text-black;
+  }
+}
+
+@utility brutal-card {
+  @apply border-4 border-black shadow-brutal bg-white p-6 transition-all hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal-lg;
+}
+
+@utility brutal-btn {
+  @apply border-4 border-black shadow-brutal px-6 py-2 font-bold transition-all active:translate-x-[2px] active:translate-y-[2px] active:shadow-none hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal-lg;
+}
+
+@utility brutal-btn-primary {
+  @apply brutal-btn bg-brutal-yellow;
+}
+
+@utility brutal-btn-secondary {
+  @apply brutal-btn bg-brutal-pink;
+}
+
+@utility brutal-input {
+  @apply border-4 border-black p-3 focus:outline-none focus:bg-brutal-yellow/10;
+}
