@@ -82,19 +82,19 @@ export default function Quiz() {
     setShowResult(false);
   };
 
-  if (loading) return <div className="text-center font-black text-4xl mt-20">LOADING BRAIN CELLS...</div>;
-  if (questions.length === 0) return <div className="text-center font-black text-4xl mt-20">NO QUESTIONS. THE PLANET IS SAVED?</div>;
+  if (loading) return <div className="text-center font-black text-4xl mt-20">PREPARING YOUR CHALLENGE...</div>;
+  if (questions.length === 0) return <div className="text-center font-black text-4xl mt-20">STAY TUNED FOR MORE QUESTIONS!</div>;
 
   if (showResult) {
     return (
       <div className="max-w-2xl mx-auto text-center space-y-8">
-        <h2 className="text-6xl font-black uppercase tracking-tighter">Quiz Over</h2>
+        <h2 className="text-6xl font-black tracking-tighter">Quiz Over</h2>
         <div className="brutal-card bg-brutal-yellow">
-          <p className="text-2xl font-bold mb-4">Your Score: {score} pts</p>
-          <p className="text-lg italic">
+          <p className="text-2xl font-bold mb-4 text-black">Your Score: {score} pts</p>
+          <p className="text-lg italic text-black">
             {score > 50 
-              ? "Wow, you actually know things. Impressive for a human." 
-              : "Yikes. Maybe stick to coloring books?"}
+              ? "Excellent work! Your climate knowledge is truly impressive." 
+              : "Great effort! Keep learning and you'll be a climate expert in no time."}
           </p>
         </div>
         <button onClick={resetQuiz} className="brutal-btn-primary flex items-center gap-2 mx-auto">
@@ -111,7 +111,8 @@ export default function Quiz() {
       <div className="flex justify-between items-end">
         <div>
           <p className="font-black uppercase text-sm text-gray-500">Question {currentIndex + 1}/{questions.length}</p>
-          <h2 className="text-4xl font-black uppercase tracking-tight">Climate Literacy Test</h2>
+          <h2 className="text-4xl font-black tracking-tight">Climate Literacy Test</h2>
+          <p className="font-bold text-gray-600 italic">"Test your knowledge and become a champion for our planet."</p>
         </div>
         <div className="text-right">
           <p className="font-black text-2xl">{score} PTS</p>
@@ -140,12 +141,13 @@ export default function Quiz() {
                   disabled={selectedOption !== null}
                   className={cn(
                     "brutal-btn text-left flex items-center justify-between",
-                    bgColor
+                    bgColor,
+                    selectedOption !== null && (isCorrectOption || isSelected) ? "text-black" : ""
                   )}
                 >
                   <span>{option}</span>
-                  {selectedOption !== null && isCorrectOption && <CheckCircle2 size={20} />}
-                  {selectedOption !== null && isSelected && !isCorrectOption && <XCircle size={20} />}
+                  {selectedOption !== null && isCorrectOption && <CheckCircle2 size={20} className="text-black" />}
+                  {selectedOption !== null && isSelected && !isCorrectOption && <XCircle size={20} className="text-black" />}
                 </button>
               );
             })}
@@ -159,7 +161,7 @@ export default function Quiz() {
               animate={{ opacity: 1, y: 0 }}
               className="mt-8 p-6 border-4 border-black bg-gray-50"
             >
-              <p className="font-black uppercase text-sm mb-2">The Truth:</p>
+              <p className="font-black uppercase text-sm mb-2 text-gray-600">The Truth:</p>
               <p className="font-bold mb-6">{currentQ.explanation}</p>
               <button onClick={nextQuestion} className="brutal-btn-primary w-full flex items-center justify-center gap-2">
                 {currentIndex + 1 === questions.length ? "Finish" : "Next Question"}

@@ -37,8 +37,8 @@ export default function Wiki() {
   return (
     <div className="space-y-8">
       <header>
-        <h2 className="text-5xl font-black uppercase tracking-tighter mb-2">Climate Wiki</h2>
-        <p className="text-xl font-bold text-gray-600 italic">"Knowledge is power. Too bad it won't stop the sea levels rising."</p>
+        <h2 className="text-5xl font-black tracking-tighter mb-2">Climate Wiki</h2>
+        <p className="text-xl font-bold text-gray-600 italic">"Knowledge is power. Empower yourself with the facts to protect our planet."</p>
       </header>
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
@@ -63,7 +63,7 @@ export default function Wiki() {
                   onClick={() => setSelectedArticle(article)}
                   className={cn(
                     "w-full text-left p-2 font-bold text-sm transition-all flex items-center justify-between",
-                    selectedArticle?.id === article.id ? "bg-brutal-yellow border-2 border-black" : "hover:bg-gray-100"
+                    selectedArticle?.id === article.id ? "bg-brutal-yellow border-2 border-black text-black" : "hover:bg-gray-100"
                   )}
                 >
                   <span className="truncate">{article.title}</span>
@@ -81,10 +81,10 @@ export default function Wiki() {
           {selectedArticle ? (
             <div className="brutal-card bg-white min-h-[600px]">
               <div className="mb-8 border-b-4 border-black pb-6">
-                <span className="px-3 py-1 bg-brutal-pink border-2 border-black font-black text-xs uppercase mb-4 inline-block">
+                <span className="px-3 py-1 bg-brutal-pink border-2 border-black font-black text-xs uppercase mb-4 inline-block text-black">
                   {selectedArticle.category}
                 </span>
-                <h1 className="text-4xl font-black uppercase tracking-tight">{selectedArticle.title}</h1>
+                <h1 className="text-4xl font-black tracking-tight">{selectedArticle.title}</h1>
               </div>
               <div className="prose prose-lg max-w-none font-bold text-gray-700 leading-relaxed">
                 {selectedArticle.content.split('\n').map((para, i) => (
@@ -95,7 +95,7 @@ export default function Wiki() {
           ) : (
             <div className="brutal-card bg-brutal-blue/10 min-h-[600px] flex flex-col items-center justify-center text-center p-12">
               <Book size={64} className="mb-6 opacity-20" />
-              <h3 className="text-3xl font-black uppercase mb-4">Select an article</h3>
+              <h3 className="text-3xl font-black mb-4">Select an Article</h3>
               <p className="text-xl font-bold text-gray-500 max-w-md">
                 Pick something to read. Or don't. Ignorance is bliss until your basement floods.
               </p>

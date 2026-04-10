@@ -7,9 +7,10 @@ import Overview from './components/Overview';
 import Quiz from './components/Quiz';
 import Calendar from './components/Calendar';
 import Database from './components/Database';
-import AskAI from './components/AskAI';
 import Wiki from './components/Wiki';
 import Settings from './components/Settings';
+import Loading from './components/Loading';
+import Leaderboard from './components/Leaderboard';
 
 export default function App() {
   const [session, setSession] = useState<any>(null);
@@ -19,14 +20,32 @@ export default function App() {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       setLoading(false);
+      if (session?.user) syncProfileEmail(session.user);
     });
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
+      if (session?.user) syncProfileEmail(session.user);
     });
 
     return () => subscription.unsubscribe();
   }, []);
+
+  const syncProfileEmail = async (user: any) => {
+    // Ensure the profiles table has the user's email for username login functionality
+    const { data } = await supabase
+      .from('profiles')
+      .select('email')
+      .eq('id', user.id)
+      .single();
+    
+    if (!data?.email && user.email) {
+      await supabase
+        .from('profiles')
+        .update({ email: user.email })
+        .eq('id', user.id);
+    }
+  };
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
@@ -35,7 +54,7 @@ export default function App() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white">
-        <div className="text-4xl font-black animate-bounce">LOADING...</div>
+        <Loading />
       </div>
     );
   }
@@ -46,17 +65,16 @@ export default function App() {
 
   return (
     <Router>
-      <div className="flex min-h-screen bg-gray-50">
+      <div className="flex h-screen overflow-hidden bg-gray-50 flex-col lg:flex-row">
         <Sidebar onLogout={handleLogout} />
-        <main className="flex-1 p-8 overflow-y-auto max-h-screen">
+        <main className="flex-1 p-4 md:p-8 overflow-y-auto">
           <div className="max-w-7xl mx-auto">
             <Routes>
               <Route path="/" element={<Overview />} />
-              <Route path="/leaderboard" element={<Overview />} />
+              <Route path="/leaderboard" element={<Leaderboard />} />
               <Route path="/quiz" element={<Quiz />} />
               <Route path="/calendar" element={<Calendar />} />
               <Route path="/database" element={<Database />} />
-              <Route path="/ask-ai" element={<AskAI />} />
               <Route path="/wiki" element={<Wiki />} />
               <Route path="/settings" element={<Settings />} />
               <Route path="*" element={<Navigate to="/" replace />} />

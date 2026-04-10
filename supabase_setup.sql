@@ -4,16 +4,18 @@
 CREATE TABLE profiles (
   id UUID REFERENCES auth.users ON DELETE CASCADE PRIMARY KEY,
   username TEXT UNIQUE,
+  email TEXT,
   full_name TEXT,
   avatar_url TEXT,
   climate_literacy_score INTEGER DEFAULT 0,
   carbon_offset_total FLOAT DEFAULT 0,
+  referrals_count INTEGER DEFAULT 0,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc'::text, NOW()) NOT NULL
 );
 
 -- 2. Leaderboard View
 CREATE VIEW leaderboard AS
-SELECT username, climate_literacy_score, carbon_offset_total
+SELECT username, climate_literacy_score, carbon_offset_total, referrals_count
 FROM profiles
 ORDER BY climate_literacy_score DESC;
 

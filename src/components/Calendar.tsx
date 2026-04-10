@@ -102,20 +102,20 @@ export default function Calendar() {
 
   return (
     <div className="space-y-8">
-      <header className="flex justify-between items-end">
+      <header className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
         <div>
-          <h2 className="text-5xl font-black uppercase tracking-tighter mb-2">Offset Tracker</h2>
-          <p className="text-xl font-bold text-gray-600 italic">"Tracking your tiny wins while the world burns."</p>
+          <h2 className="text-5xl font-black tracking-tighter mb-2">Offset Tracker</h2>
+          <p className="text-xl font-bold text-gray-600 italic">"Every small action adds up to a big impact. Keep tracking your wins!"</p>
         </div>
         <div className="brutal-card bg-gradient-sky py-2 px-6">
-          <p className="font-black text-2xl">{totalSaved.toFixed(1)}kg CO2 Saved</p>
+          <p className="font-black text-2xl text-black">{totalSaved.toFixed(1)}kg CO2 Saved</p>
         </div>
       </header>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 brutal-card">
           <div className="flex justify-between items-center mb-8">
-            <h3 className="text-2xl font-black uppercase">{format(currentDate, 'MMMM yyyy')}</h3>
+            <h3 className="text-2xl font-black">{format(currentDate, 'MMMM yyyy')}</h3>
             <div className="flex gap-2">
               <button onClick={() => setCurrentDate(d => new Date(d.getFullYear(), d.getMonth() - 1))} className="brutal-btn py-1 px-3">Prev</button>
               <button onClick={() => setCurrentDate(d => new Date(d.getFullYear(), d.getMonth() + 1))} className="brutal-btn py-1 px-3">Next</button>
@@ -124,7 +124,7 @@ export default function Calendar() {
 
           <div className="grid grid-cols-7 gap-2">
             {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(d => (
-              <div key={d} className="text-center font-black text-xs uppercase mb-2">{d}</div>
+              <div key={d} className="text-center font-black text-xs uppercase mb-2 text-gray-400">{d}</div>
             ))}
             {days.map(day => {
               const dayActivities = activities.filter(a => isSameDay(new Date(a.activity_date), day));
@@ -136,7 +136,7 @@ export default function Calendar() {
                   onClick={() => setSelectedDate(day)}
                   className={cn(
                     "aspect-square border-2 border-black p-1 flex flex-col items-center justify-center transition-all",
-                    isSelected ? "bg-brutal-yellow translate-x-[-1px] translate-y-[-1px] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]" : "hover:bg-gray-50",
+                    isSelected ? "bg-brutal-yellow translate-x-[-1px] translate-y-[-1px] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] text-black" : "hover:bg-gray-50",
                     dayActivities.length > 0 && !isSelected ? "bg-brutal-green/20" : ""
                   )}
                 >
@@ -151,7 +151,7 @@ export default function Calendar() {
         </div>
 
         <div className="brutal-card bg-white">
-          <h3 className="text-xl font-black uppercase mb-6">Activities for {format(selectedDate, 'MMM d')}</h3>
+          <h3 className="text-xl font-black mb-6">Activities for {format(selectedDate, 'MMM d')}</h3>
           
           <div className="space-y-4 mb-8">
             {activities.filter(a => isSameDay(new Date(a.activity_date), selectedDate)).map(activity => (
@@ -180,9 +180,9 @@ export default function Calendar() {
       </div>
 
       {showAddModal && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50 backdrop-blur-sm">
           <div className="brutal-card max-w-md w-full bg-white">
-            <h3 className="text-2xl font-black uppercase mb-6">What did you do?</h3>
+            <h3 className="text-2xl font-black mb-6">What did you do?</h3>
             <div className="grid grid-cols-1 gap-3">
               {ACTIVITY_TYPES.map(type => (
                 <button

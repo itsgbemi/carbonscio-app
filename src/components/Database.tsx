@@ -52,8 +52,8 @@ export default function Database() {
   return (
     <div className="space-y-8">
       <header>
-        <h2 className="text-5xl font-black uppercase tracking-tighter mb-2">Company Database</h2>
-        <p className="text-xl font-bold text-gray-600 italic">"Who's funding the future and who's just burning it?"</p>
+        <h2 className="text-5xl font-black tracking-tighter mb-2">Company Database</h2>
+        <p className="text-xl font-bold text-gray-600 italic">"Discover companies leading the charge towards a sustainable future."</p>
       </header>
 
       <div className="flex flex-col md:flex-row gap-4">
@@ -84,7 +84,7 @@ export default function Database() {
           <div key={company.id} className="brutal-card flex flex-col justify-between">
             <div>
               <div className="flex justify-between items-start mb-4">
-                <h3 className="text-2xl font-black uppercase">{company.name}</h3>
+                <h3 className="text-2xl font-black">{company.name}</h3>
                 <div className={cn("px-3 py-1 border-2 font-black text-xs uppercase", getStatusColor(company.status))}>
                   {company.status.replace('_', ' ')}
                 </div>
@@ -92,7 +92,7 @@ export default function Database() {
               <p className="font-bold text-gray-600 mb-4">{company.description}</p>
               <div className="bg-brutal-pink/10 border-l-4 border-brutal-pink p-4 mb-6 italic font-bold">
                 <p className="text-sm uppercase font-black text-brutal-pink mb-1">The Roast:</p>
-                "{company.roast_comment}"
+                <span>"{company.roast_comment}"</span>
               </div>
             </div>
             <a
