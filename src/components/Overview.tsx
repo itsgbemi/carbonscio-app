@@ -36,7 +36,7 @@ export default function Overview() {
     <div className="space-y-8">
       <header>
         <h2 className="text-5xl font-black tracking-tighter mb-2">Dashboard</h2>
-        <p className="text-xl font-bold text-gray-600 italic">"Your journey to climate mastery starts here. Keep up the great work!"</p>
+        <p className="text-xl font-bold text-gray-600 italic">"Look at you, trying to save the world from your couch."</p>
       </header>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -48,7 +48,7 @@ export default function Overview() {
               <p className="text-4xl font-black">{stats.score}</p>
             </div>
           </div>
-          <p className="font-bold text-sm">You're building a solid foundation of climate knowledge. Keep learning!</p>
+          <p className="font-bold text-sm">You're basically a climate scientist. Or just good at guessing.</p>
         </div>
 
         <div className="brutal-card bg-gradient-sky">
@@ -59,7 +59,7 @@ export default function Overview() {
               <p className="text-4xl font-black">{stats.offset}kg</p>
             </div>
           </div>
-          <p className="font-bold text-sm">Every kilogram counts! You're making a real difference for our planet.</p>
+          <p className="font-bold text-sm">That's like... 3 trees. Don't quit your day job yet.</p>
         </div>
 
         <div className="brutal-card bg-gradient-sunset">
@@ -70,7 +70,7 @@ export default function Overview() {
               <p className="text-4xl font-black">{stats.referrals}</p>
             </div>
           </div>
-          <p className="font-bold text-sm">You're a climate champion! Thanks for inspiring others to join the cause.</p>
+          <p className="font-bold text-sm">Spreading the word? Or just annoying your friends?</p>
         </div>
 
         <div className="brutal-card bg-brutal-green">
@@ -81,21 +81,21 @@ export default function Overview() {
               <p className="text-4xl font-black">#420</p>
             </div>
           </div>
-          <p className="font-bold text-sm">You're rising through the ranks! Keep going to reach the top.</p>
+          <p className="font-bold text-sm">Top 99%. Technically true.</p>
         </div>
       </div>
 
       <div className="grid grid-cols-1 gap-8">
         <section className="brutal-card bg-brutal-yellow">
           <h3 className="text-2xl font-black mb-6 flex items-center gap-2">
-            <Leaf /> Climate Motivation
+            <AlertTriangle /> Climate Roast
           </h3>
           <div className="space-y-4 font-bold text-lg">
-            <p>"Small steps lead to big changes. Your actions today shape the world of tomorrow."</p>
-            <p>"Every sustainable choice you make is a victory for our shared home."</p>
-            <p>"You are part of a global movement for a greener, healthier planet. Keep shining!"</p>
+            <p>"Your carbon footprint is so big, it has its own zip code."</p>
+            <p>"Recycling one plastic bottle doesn't make you Captain Planet, Brenda."</p>
+            <p>"If the ice caps melt any faster, your beach house will just be a 'house'."</p>
           </div>
-          <button className="brutal-btn bg-white mt-8 w-full">Get More Motivation</button>
+          <button className="brutal-btn bg-white mt-8 w-full">Get Another Roast</button>
         </section>
       </div>
     </div>

@@ -17,15 +17,26 @@ export default function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
+    supabase.auth.getSession().then(({ data: { session }, error }) => {
+      if (error) {
+        console.error('Auth session error:', error.message);
+        // Clear stale session if there's an error (e.g., invalid refresh token)
+        supabase.auth.signOut();
+        setSession(null);
+      } else {
+        setSession(session);
+        if (session?.user) syncProfileEmail(session.user);
+      }
       setLoading(false);
-      if (session?.user) syncProfileEmail(session.user);
     });
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-      if (session?.user) syncProfileEmail(session.user);
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === 'SIGNED_OUT') {
+        setSession(null);
+      } else {
+        setSession(session);
+        if (session?.user) syncProfileEmail(session.user);
+      }
     });
 
     return () => subscription.unsubscribe();

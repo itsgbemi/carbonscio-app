@@ -38,7 +38,7 @@ export default function Wiki() {
     <div className="space-y-8">
       <header>
         <h2 className="text-5xl font-black tracking-tighter mb-2">Climate Wiki</h2>
-        <p className="text-xl font-bold text-gray-600 italic">"Knowledge is power. Empower yourself with the facts to protect our planet."</p>
+        <p className="text-xl font-bold text-gray-600 italic">"Read up on all the ways we've messed up the only planet we have."</p>
       </header>
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">

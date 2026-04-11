@@ -82,8 +82,8 @@ export default function Quiz() {
     setShowResult(false);
   };
 
-  if (loading) return <div className="text-center font-black text-4xl mt-20">PREPARING YOUR CHALLENGE...</div>;
-  if (questions.length === 0) return <div className="text-center font-black text-4xl mt-20">STAY TUNED FOR MORE QUESTIONS!</div>;
+  if (loading) return <div className="text-center font-black text-4xl mt-20">CALCULATING YOUR IGNORANCE...</div>;
+  if (questions.length === 0) return <div className="text-center font-black text-4xl mt-20">NO QUESTIONS. THE PLANET IS SAVED. (NOT)</div>;
 
   if (showResult) {
     return (
@@ -93,8 +93,8 @@ export default function Quiz() {
           <p className="text-2xl font-bold mb-4 text-black">Your Score: {score} pts</p>
           <p className="text-lg italic text-black">
             {score > 50 
-              ? "Excellent work! Your climate knowledge is truly impressive." 
-              : "Great effort! Keep learning and you'll be a climate expert in no time."}
+              ? "You know a lot. Too bad knowledge doesn't stop rising sea levels." 
+              : "Yikes. Maybe stick to sorting your trash. Oh wait, that doesn't help either."}
           </p>
         </div>
         <button onClick={resetQuiz} className="brutal-btn-primary flex items-center gap-2 mx-auto">
@@ -112,7 +112,7 @@ export default function Quiz() {
         <div>
           <p className="font-black uppercase text-sm text-gray-500">Question {currentIndex + 1}/{questions.length}</p>
           <h2 className="text-4xl font-black tracking-tight">Climate Literacy Test</h2>
-          <p className="font-bold text-gray-600 italic">"Test your knowledge and become a champion for our planet."</p>
+          <p className="font-bold text-gray-600 italic">"Test your knowledge. Or just confirm your inevitable doom."</p>
         </div>
         <div className="text-right">
           <p className="font-black text-2xl">{score} PTS</p>

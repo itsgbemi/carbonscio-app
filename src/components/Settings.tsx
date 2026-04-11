@@ -99,7 +99,7 @@ export default function Settings() {
     <div className="max-w-3xl mx-auto space-y-8">
       <header>
         <h2 className="text-5xl font-black tracking-tighter mb-2">Settings</h2>
-        <p className="text-xl font-bold text-gray-600 italic">"Make Carbonscio yours and lead the way to a greener future."</p>
+        <p className="text-xl font-bold text-gray-600 italic">"Customize your experience. Not that it'll change the outcome."</p>
       </header>
 
       <div className="space-y-6">

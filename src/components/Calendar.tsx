@@ -105,7 +105,7 @@ export default function Calendar() {
       <header className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
         <div>
           <h2 className="text-5xl font-black tracking-tighter mb-2">Offset Tracker</h2>
-          <p className="text-xl font-bold text-gray-600 italic">"Every small action adds up to a big impact. Keep tracking your wins!"</p>
+          <p className="text-xl font-bold text-gray-600 italic">"Log your tiny, insignificant contributions to a global catastrophe."</p>
         </div>
         <div className="brutal-card bg-gradient-sky py-2 px-6">
           <p className="font-black text-2xl text-black">{totalSaved.toFixed(1)}kg CO2 Saved</p>

@@ -55,7 +55,7 @@ export default function Leaderboard() {
     <div className="space-y-8">
       <header>
         <h2 className="text-5xl font-black tracking-tighter mb-2">Leaderboard</h2>
-        <p className="text-xl font-bold text-gray-600 italic">"Celebrating the champions of climate action and literacy."</p>
+        <p className="text-xl font-bold text-gray-600 italic">"Behold the list of people who think they're better than you."</p>
       </header>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
